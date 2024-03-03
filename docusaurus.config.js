@@ -8,20 +8,14 @@ import { themes as prismThemes } from "prism-react-renderer"
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "My Site",
-  tagline: "Dinosaurs are cool",
+  title: "Lucky - Web framework for Crystal",
+  tagline: "Build lightning fast web apps with fewer bugs",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://your-docusaurus-site.example.com",
+  url: "https://www.luckyframework.org",
   // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: "facebook", // Usually your GitHub org/user name.
-  projectName: "docusaurus", // Usually your repo name.
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -66,9 +60,9 @@ const config = {
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
       navbar: {
-        title: "My Site",
+        title: "Lucky",
         logo: {
-          alt: "My Site Logo",
+          alt: "Lucky Logo",
           src: "img/logo.svg",
         },
         items: [
@@ -80,7 +74,7 @@ const config = {
           },
           { to: "/blog", label: "Blog", position: "left" },
           {
-            href: "https://github.com/facebook/docusaurus",
+            href: "https://github.com/luckyframework/lucky",
             label: "GitHub",
             position: "right",
           },
@@ -90,52 +84,41 @@ const config = {
         style: "dark",
         links: [
           {
-            title: "Docs",
-            items: [
-              {
-                label: "Tutorial",
-                to: "/docs/intro",
-              },
-            ],
+            label: "Code of Conduct",
+            href: "https://github.com/luckyframework/lucky/blob/main/CODE_OF_CONDUCT.md",
           },
           {
-            title: "Community",
-            items: [
-              {
-                label: "Stack Overflow",
-                href: "https://stackoverflow.com/questions/tagged/docusaurus",
-              },
-              {
-                label: "Discord",
-                href: "https://discordapp.com/invite/docusaurus",
-              },
-              {
-                label: "Twitter",
-                href: "https://twitter.com/docusaurus",
-              },
-            ],
+            label: "Contributors",
+            href: "https://github.com/luckyframework/lucky/graphs/contributors",
           },
           {
-            title: "More",
-            items: [
-              {
-                label: "Blog",
-                to: "/blog",
-              },
-              {
-                label: "GitHub",
-                href: "https://github.com/facebook/docusaurus",
-              },
-            ],
+            label: "Twitter",
+            href: "https://twitter.com/luckyframework",
+          },
+          {
+            label: "Discord",
+            href: "https://discord.com/invite/HeqJUcb",
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
     }),
+
+  plugins: [
+    function tailwindPlugin(context, options) {
+      return {
+        name: "docusaurus-tailwindcss",
+        configurePostCss(postCssOptions) {
+          postCssOptions.plugins.push(require("tailwindcss"))
+          postCssOptions.plugins.push(require("autoprefixer"))
+          return postCssOptions
+        },
+      }
+    },
+  ],
 }
 
 export default config
