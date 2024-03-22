@@ -17,6 +17,13 @@ const config = {
   // Set the /<baseUrl>/ pathname under which your site is served
   baseUrl: "/",
 
+  customFields: {
+    minCrystalVersion: process.env.MIN_CRYSTAL_VERSION || "1.6.0",
+    maxCrystalVersion: process.env.MAX_CRYSTAL_VERSION || "1.11.2",
+    luckyCliVersion: process.env.LUCKY_CLI_VERSION || "1.1.1",
+    luckyCliTag: process.env.LUCKY_CLI_TAG || "v1.1.1",
+  },
+
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
 
